@@ -12,14 +12,18 @@ def format_lang(lang, name=None, suffix=None):
     code = lang[code_key[lang['two']]] + ('-' + suffix if suffix else "")
     return {"name": name, "code": code}
 
-def search(request):
-    q = request.GET.get('term') or "English"
-    q = q.lower()
+def split_query(q):
     if '-' in q:
         q = q.split('-')
         q, suffix = '-'.join(q[:-1]), q[-1]
     else:
         suffix = None
+    return q, suffix
+
+def search(request):
+    q = request.GET.get('term') or "English"
+    q = q.lower()
+    q, suffix = split_query(q)
     
     langs = []
 
@@ -39,6 +43,7 @@ def validate(request):
     key = None
     match = None
     suggestions = []
+    q, suffix = split_query(q)
     
     if len(q) == 2:
         key = 'two'
