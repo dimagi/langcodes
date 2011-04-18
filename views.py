@@ -7,23 +7,29 @@ code_key = defaultdict(lambda: "three")
 for two in ('en', 'sw', 'es', 'af'):
     code_key[two] = "two"
 
-def format_lang(lang, name=None):
+def format_lang(lang, name=None, suffix=None):
     name = name or lang["names"][0]
-    code = lang[code_key[lang['two']]]
+    code = lang[code_key[lang['two']]] + ('-' + suffix if suffix else "")
     return {"name": name, "code": code}
 
 def search(request):
     q = request.GET.get('term') or "English"
     q = q.lower()
+    if '-' in q:
+        q = q.split('-')
+        q, suffix = '-'.join(q[:-1]), q[-1]
+    else:
+        suffix = None
+    
     langs = []
 
     for lang in all_langs:
         if lang['two'].startswith(q) or lang['three'].startswith(q):
-            langs.append(format_lang(lang))
+            langs.append(format_lang(lang,suffix=suffix))
         else:
             for name in lang['names']:
                 if name.lower().startswith(q):
-                    langs.append(format_lang(lang))
+                    langs.append(format_lang(lang, suffix=suffix))
                     break
     
     return HttpResponse(json.dumps(langs))
