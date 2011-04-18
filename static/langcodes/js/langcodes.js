@@ -1,5 +1,5 @@
-$(function(){
-    $('.langcodes').autocomplete({
+jQuery.prototype.langcodes = function() {
+    return this.autocomplete({
         source: function( request, response ) {
             $.ajax({
                 url: "/langcodes/langs.json",
@@ -17,4 +17,4 @@ $(function(){
         },
         minLength: 0
     });
-});
+}
