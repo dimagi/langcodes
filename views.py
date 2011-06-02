@@ -1,10 +1,10 @@
 from collections import defaultdict
 from django.http import HttpResponse
 import json
-from langcodes import langs as all_langs
+from langcodes import langs as all_langs, grandfathered
 
 code_key = defaultdict(lambda: "three")
-for two in ('en', 'sw', 'es', 'af'):
+for two in grandfathered:
     code_key[two] = "two"
 
 def format_lang(lang, name=None, suffix=None):
