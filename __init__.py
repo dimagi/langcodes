@@ -12,8 +12,8 @@ langs_by_code = {}
 for lang in langs:
     if lang['two'] in grandfathered:
         langs_by_code[lang['two']] = lang
-    langs_by_code[lang['three']] = lang
-
+    else:
+        langs_by_code[lang['three']] = lang
 
 def get_name(lang):
     lang_info = langs_by_code.get(lang)
