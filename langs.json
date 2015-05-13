@@ -530,6 +530,11 @@
         "three": "dgr"
     },
     {
+        "names": ["Diola"],
+        "two": "",
+        "three": "dyo"
+    },
+    {
         "names": ["Dinka"],
         "two": "",
         "three": "din"
@@ -688,6 +693,11 @@
         "names": ["Western Frisian"],
         "two": "fy",
         "three": "fry"
+    },
+    {
+        "names": ["Pulaar"],
+        "two": "",
+        "three": "fuc"
     },
     {
         "names": ["Fulah"],
