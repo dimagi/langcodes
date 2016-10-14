@@ -1,6 +1,8 @@
-from django.conf.urls import patterns
+from django.conf.urls import patterns, url
+
+from views import search, validate
 
 urlpatterns = patterns('langcodes.views',
-    (r'^langs.json', 'search'),
-    (r'^validate.json', 'validate'),
+    url(r'^langs.json', search, name='search'),
+    url(r'^validate.json', validate, name='validate'),
 )
