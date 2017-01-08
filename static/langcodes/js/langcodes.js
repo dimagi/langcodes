@@ -8,6 +8,15 @@ jQuery.prototype.langcodes = function() {
                 text: element.val(),
             });
         },
+        // Allow manually entered text in drop down, which is not supported by legacy select2.
+        createSearchChoice: function(term, data) {
+            if (!_.find(data, function(d) { return d.text === term; })) {
+                return {
+                    id: term,
+                    text: term,
+                };
+            }
+        },
         ajax: {
             url: "/langcodes/langs.json",
             data: function(term) {
