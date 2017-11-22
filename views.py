@@ -30,7 +30,7 @@ def search(request):
 
     for lang in all_langs:
         if lang['two'].startswith(q) or lang['three'].startswith(q):
-            langs.append(format_lang(lang,suffix=suffix))
+            langs.append(format_lang(lang, suffix=suffix))
         else:
             for name in lang['names']:
                 if name.lower().startswith(q):
