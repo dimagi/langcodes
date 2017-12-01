@@ -53,7 +53,7 @@ def validate(request):
 
     if key:
         q_lower = q.lower()
-        match = filter(lambda lang: lang[key] == q_lower, all_langs)
+        match = [lang for lang in all_langs if lang[key] == q_lower]
         match = format_lang(match[0]) if match else None
         if match and match['code'] != q:
             suggestions.append(match)
@@ -61,12 +61,7 @@ def validate(request):
             
     if not match:
         q_lower = q.lower()
-        sugs = filter(
-            lambda lang: lang["three"].startswith(q_lower) or filter(
-                lambda name: name.lower().startswith(q_lower), lang['names']
-            ),
-            all_langs
-        )
+        sugs = [lang for lang in all_langs if lang["three"].startswith(q_lower) or [name for name in lang['names'] if name.lower().startswith(q_lower)]]
         suggestions.extend([format_lang(lang) for lang in sugs])
 
     def filter_suggestions(old_suggestions):
