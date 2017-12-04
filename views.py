@@ -61,7 +61,12 @@ def validate(request):
             
     if not match:
         q_lower = q.lower()
-        sugs = [lang for lang in all_langs if lang["three"].startswith(q_lower) or [name for name in lang['names'] if name.lower().startswith(q_lower)]]
+        sugs = [
+            lang for lang in all_langs
+            if lang["three"].startswith(q_lower) or [
+                name for name in lang['names'] if name.lower().startswith(q_lower)
+            ]
+        ]
         suggestions.extend([format_lang(lang) for lang in sugs])
 
     def filter_suggestions(old_suggestions):
