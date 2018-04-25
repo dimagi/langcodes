@@ -23,20 +23,18 @@ def split_query(q):
     return q, suffix
 
 def search(request):
-    q = request.GET.get('term') or "English"
-    q = q.lower()
-    q, suffix = split_query(q)
-    
+    q = request.GET.get('term')
     langs = []
+    if q:
+        q = q.lower()
+        q, suffix = split_query(q)
 
-    for lang in all_langs:
-        if lang['two'].startswith(q) or lang['three'].startswith(q):
-            langs.append(format_lang(lang, suffix=suffix))
-        else:
-            for name in lang['names']:
-                if name.lower().startswith(q):
-                    langs.append(format_lang(lang, suffix=suffix))
-                    break
+        for lang in all_langs:
+            if lang['two'].startswith(q) or lang['three'].startswith(q):
+                langs.append(format_lang(lang, suffix=suffix))
+    else:
+        for lang in all_langs:
+            langs.append(format_lang(lang))
     
     return HttpResponse(json.dumps(langs))
 
