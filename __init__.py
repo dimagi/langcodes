@@ -2,11 +2,12 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 import json, os
 import six
+from io import open
 
 try:
     langs
 except:
-    with open(os.path.join(os.path.dirname(__file__), 'langs.json')) as f:
+    with open(os.path.join(os.path.dirname(__file__), 'langs.json'), encoding='utf-8') as f:
         langs = json.load(f)
 
 grandfathered = ('en', 'sw', 'es', 'af')
