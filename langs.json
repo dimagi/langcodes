@@ -2398,5 +2398,15 @@
         "names": ["Zaza", "Dimili", "Dimli", "Kirdki", "Kirmanjki", "Zazaki"],
         "two": "",
         "three": "zza"
+    },
+    {
+        "names": ["Garo"],
+        "two": "",
+        "three": "grt"
+    },
+    {
+        "names": ["Mizo"],
+        "two": "lus",
+        "three": "lus"
     }
 ]
