@@ -30,7 +30,8 @@ def search(request):
         q, suffix = split_query(q)
 
         for lang in all_langs:
-            if lang['two'].startswith(q) or lang['three'].startswith(q):
+            temp_lang = lang['names'] + [lang['two'], lang['three']]
+            if [n for n in temp_lang if n.lower().startswith(q)]:
                 langs.append(format_lang(lang, suffix=suffix))
     else:
         for lang in all_langs:
