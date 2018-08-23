@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import json, os
 import six
 from io import open
+from django.core.cache import cache
 
 try:
     langs
@@ -19,6 +20,7 @@ for lang in langs:
     else:
         langs_by_code[lang['three']] = lang
 
+
 def get_name(lang):
     lang_info = langs_by_code.get(lang)
     if lang_info:
@@ -26,10 +28,14 @@ def get_name(lang):
     else:
         return None
 
-def get_all_langs_for_select():
-    langs_for_select = []
-    for key, val in six.iteritems(langs_by_code):
-        label = key + " (" + val['names'][0] + ")"
-        langs_for_select.append((key, label))
 
+def get_all_langs_for_select():
+    langs_for_select = cache.get('__all_langs_for_select')
+    if not langs_for_select:
+        langs_for_select = []
+        for key, val in six.iteritems(langs_by_code):
+            label = key + " (" + val['names'][0] + ")"
+            langs_for_select.append((key, label))
+        cache.set('__all_langs_for_select', langs_for_select, 12 * 60 * 60)
     return langs_for_select
+
