@@ -1,13 +1,11 @@
 (function(factory){
-
     if (typeof define === 'function' && define.amd) {
-        define(['jquery','select2-3.4.5-legacy/select2.min'], factory);
+        define(['jquery','select2-3.5.2-legacy/select2.min'], factory);
     } else {
         factory(jQuery);
     }
-
-})(function($){
-    $.prototype.langcodes = function() {
+})(function ($){
+    $.prototype.langcodes = function () {
         return this.select2({
             minimumInputLength: 0,
             delay: 100,
