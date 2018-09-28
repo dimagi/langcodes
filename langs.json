@@ -2285,7 +2285,7 @@
         "three": "wak"
     },
     {
-        "names": ["Walamo"],
+        "names": ["Walamo", "Wolaytta"],
         "two": "",
         "three": "wal"
     },
@@ -2408,5 +2408,15 @@
         "names": ["Mizo"],
         "two": "",
         "three": "lus"
+    },
+    {
+        "names": ["Gedeo"],
+        "two": "",
+        "three": "drs"
+    },
+    {
+        "names": ["Koore", "Koorete"],
+        "two": "",
+        "three": "kqy"
     }
 ]
