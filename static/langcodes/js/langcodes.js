@@ -1,38 +1,29 @@
 (function(factory){
     if (typeof define === 'function' && define.amd) {
-        define(['jquery','select2-3.5.2-legacy/select2.min'], factory);
+        define(['jquery','select2/dist/js/select2.full.min'], factory);
     } else {
         factory(jQuery);
     }
 })(function ($){
-    $.prototype.langcodes = function () {
-        return this.select2({
+    $.prototype.langcodes = function (originalValue) {
+        var $select = $(this);
+        if (originalValue) {
+            $select.append(new Option(originalValue));
+            $select.val(originalValue);
+        }
+        return $select.select2({
             minimumInputLength: 0,
-            delay: 100,
-            initSelection: function(element, callback) {
-                callback({
-                    id: element.val(),
-                    text: element.val(),
-                });
-            },
-            // Allow manually entered text in drop down, which is not supported by legacy select2.
-            createSearchChoice: function(term, data) {
-                if (!_.find(data, function(d) { return d.text === term; })) {
-                    return {
-                        id: term,
-                        text: term,
-                    };
-                }
-            },
+            tags: true,
             ajax: {
                 url: "/langcodes/langs.json",
-                data: function(term) {
+                data: function (params) {
                     return {
-                        term: term,
+                        term: params.term,
                     };
                 },
+                quietMillis: 100,
                 dataType: 'json',
-                results: function(data) {
+                processResults: function(data, params) {
                     return {
                         results: $.map(data, function(item) {
                             return {
