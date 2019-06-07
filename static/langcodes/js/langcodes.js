@@ -21,7 +21,7 @@
                         term: params.term,
                     };
                 },
-                quietMillis: 100,
+                delay: 100,
                 dataType: 'json',
                 processResults: function(data, params) {
                     return {
