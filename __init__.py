@@ -1,7 +1,6 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 import json, os
-import six
 from io import open
 
 try:
@@ -28,7 +27,7 @@ def get_name(lang):
 
 def get_all_langs_for_select():
     langs_for_select = []
-    for key, val in six.iteritems(langs_by_code):
+    for key, val in langs_by_code.items():
         label = key + " (" + val['names'][0] + ")"
         langs_for_select.append((key, label))
 
