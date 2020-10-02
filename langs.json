@@ -1615,6 +1615,11 @@
         "three": "nub"
     },
     {
+        "names": ["Nuer"],
+        "two": "",
+        "three": "nus"
+    },
+    {
         "names": ["Chichewa", "Chewa", "Nyanja"],
         "two": "ny",
         "three": "nya"
