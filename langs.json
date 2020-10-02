@@ -90,6 +90,11 @@
         "three": "anp"
     },
     {
+        "names": ["Anuak"],
+        "two": "",
+        "three": "anu"
+    },
+    {
         "names": ["Apache languages"],
         "two": "",
         "three": "apa"
@@ -560,6 +565,11 @@
         "three": "dra"
     },
     {
+        "names": ["Gedeo"],
+        "two": "",
+        "three": "drs"
+    },
+    {
         "names": ["Lower Sorbian"],
         "two": "",
         "three": "dsb"
@@ -735,9 +745,19 @@
         "three": "gem"
     },
     {
+        "names": ["Garo"],
+        "two": "",
+        "three": "grt"
+    },
+    {
         "names": ["Georgian"],
         "two": "ka",
         "three": "kat"
+    },
+    {
+        "names": ["Koore", "Koorete"],
+        "two": "",
+        "three": "kqy"
     },
     {
         "names": ["German"],
@@ -1298,6 +1318,11 @@
         "names": ["Luo (Kenya and Tanzania)"],
         "two": "",
         "three": "luo"
+    },
+    {
+        "names": ["Mizo"],
+        "two": "",
+        "three": "lus"
     },
     {
         "names": ["Lushai"],
@@ -2403,25 +2428,5 @@
         "names": ["Zaza", "Dimili", "Dimli", "Kirdki", "Kirmanjki", "Zazaki"],
         "two": "",
         "three": "zza"
-    },
-    {
-        "names": ["Garo"],
-        "two": "",
-        "three": "grt"
-    },
-    {
-        "names": ["Mizo"],
-        "two": "",
-        "three": "lus"
-    },
-    {
-        "names": ["Gedeo"],
-        "two": "",
-        "three": "drs"
-    },
-    {
-        "names": ["Koore", "Koorete"],
-        "two": "",
-        "three": "kqy"
     }
 ]
