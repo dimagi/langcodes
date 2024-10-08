@@ -1,9 +1,9 @@
-from __future__ import absolute_import
-from __future__ import unicode_literals
 from collections import defaultdict
-from django.http import HttpResponse
-import json
-from langcodes import langs as all_langs, grandfathered
+
+from django.http import JsonResponse
+
+from langcodes import grandfathered
+from langcodes import langs as all_langs
 
 code_key = defaultdict(lambda: "three")
 for two in grandfathered:
@@ -38,7 +38,7 @@ def search(request):
         for lang in all_langs:
             langs.append(format_lang(lang))
     
-    return HttpResponse(json.dumps(langs))
+    return JsonResponse(langs, safe=False)
 
 def validate(request):
     q = request.GET.get('term') or ''
@@ -79,7 +79,7 @@ def validate(request):
                 sug_codes.add(sug['code'])
         return suggestions
     suggestions = filter_suggestions(suggestions)
-    return HttpResponse(json.dumps({
+    return JsonResponse({
         "match":  match,
         "suggestions": suggestions,
-    }))
+    })
